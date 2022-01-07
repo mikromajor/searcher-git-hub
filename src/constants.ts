@@ -1,6 +1,6 @@
-export type USER={
-  name: string;
-  id: number;
-  img: string;
-  [key:string]:string|number;
-}
+export const INITIAL_PAGE_DATA = {
+  userName: "",
+  usersCount: 0,
+  users: [],
+  currentUser: null,
+};

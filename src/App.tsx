@@ -1,10 +1,17 @@
 import { useState } from "react";
-import "./App.scss";
-import { UsersSearcher, UsersList } from "./Components";
+import { UsersSearcher, UsersList } from "./components";
+import { useGetCacheData } from "./hooks";
 
-function App() {
-  const [users, setUsers] = useState([]);
+import "./App.scss";
+
+const App = () => {
+  console.log("APP render");
+
+  const { cacheUsers } = useGetCacheData();
+
+  const [users, setUsers] = useState(cacheUsers);
   const [isLoad, setIsLoad] = useState(false);
+
   return (
     <div className='App'>
       <UsersSearcher
@@ -18,5 +25,5 @@ function App() {
       )}
     </div>
   );
-}
+};
 export default App;

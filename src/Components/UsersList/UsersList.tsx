@@ -1,5 +1,5 @@
 import { ListGroup } from "react-bootstrap";
-import { USER } from "../../constants";
+import { USER } from "../../types";
 type UsersListProto = {
   users: USER[];
 };

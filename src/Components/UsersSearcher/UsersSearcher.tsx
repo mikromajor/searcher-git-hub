@@ -1,23 +1,31 @@
 import {
   useState,
   useCallback,
-  ReactEventHandler,
+  useEffect,
+  FC,
 } from "react";
 import Form from "react-bootstrap/Form";
-import { getUsers } from "../../API/idex";
+import { getUsers } from "../../api";
+import { PageCache } from "../../utils";
+import { useGetCacheData } from "../../hooks";
+
 import "./UsersSearcher.scss";
 
 type UsersSearcherProps = {
-  setUsers: React.Dispatch<React.SetStateAction<never[]>>;
-  setIsLoad: React.Dispatch<React.SetStateAction<boolean>>;
+  setUsers: (users: any[]) => void;
+  setIsLoad: (value: boolean) => void;
 };
 
-const UsersSearcher = ({
+const UsersSearcher: FC<UsersSearcherProps> = ({
   setUsers,
   setIsLoad,
-}: UsersSearcherProps) => {
-  const [userName, setUserName] = useState("");
-  const [usersCount, setUsersCount] = useState(0);
+}) => {
+  const { cacheUserName, cacheUsersCount } =
+    useGetCacheData();
+
+  const [userName, setUserName] = useState(cacheUserName);
+  const [usersCount, setUsersCount] =
+    useState(cacheUsersCount);
 
   const handleFormSubmit: React.FormEventHandler<HTMLFormElement> =
     useCallback(
