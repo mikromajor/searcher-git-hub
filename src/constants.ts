@@ -1,6 +1,8 @@
-export const INITIAL_PAGE_DATA = {
-  userName: "",
-  usersCount: 0,
-  users: [],
-  currentUser: null,
+import { PageCacheValueType } from "./types";
+
+export const INITIAL_PAGE_CACHE_DATA: PageCacheValueType = {
+  cacheUserName: "",
+  cacheUsersCount: 0,
+  cacheUsers: [],
+  cacheCurrentUser: null,
 };

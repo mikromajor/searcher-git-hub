@@ -1,13 +1,14 @@
 import {
   useState,
   useCallback,
-  useEffect,
   FC,
+  useContext,
 } from "react";
 import Form from "react-bootstrap/Form";
 import { getUsers } from "../../api";
+import { PageContext } from "../../context";
 import { PageCache } from "../../utils";
-import { useGetCacheData } from "../../hooks";
+import { Title } from "../../ui";
 
 import "./UsersSearcher.scss";
 
@@ -21,7 +22,7 @@ const UsersSearcher: FC<UsersSearcherProps> = ({
   setIsLoad,
 }) => {
   const { cacheUserName, cacheUsersCount } =
-    useGetCacheData();
+    useContext(PageContext);
 
   const [userName, setUserName] = useState(cacheUserName);
   const [usersCount, setUsersCount] =
@@ -40,6 +41,12 @@ const UsersSearcher: FC<UsersSearcherProps> = ({
           setUsers(items);
           setUsersCount(total_count);
           setIsLoad(false);
+
+          PageCache.set({
+            cacheUserName: userName,
+            cacheUsersCount: total_count,
+            cacheUsers: items,
+          });
         }
         getUsersRequest();
       },
@@ -47,8 +54,8 @@ const UsersSearcher: FC<UsersSearcherProps> = ({
     );
 
   return (
-    <div className='UsersSearcher'>
-      <h2>Git Hub searcher</h2>
+    <div className='usersSearcher'>
+      <Title />
       <Form onSubmit={handleFormSubmit}>
         <Form.Group
           className='mb-3'

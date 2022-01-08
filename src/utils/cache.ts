@@ -1,9 +1,9 @@
-import { IPageCacheValue } from "../types";
+import { PageCacheValueType } from "../types";
 
-import { INITIAL_PAGE_DATA } from "../constants";
+import { INITIAL_PAGE_CACHE_DATA } from "../constants";
 
 class PageCache {
-  set(value: IPageCacheValue) {
+  set(value: Partial<PageCacheValueType>) {
     const prevState = this.get();
 
     localStorage.setItem(
@@ -14,7 +14,9 @@ class PageCache {
 
   get() {
     const value = localStorage.getItem("pageState");
-    return value ? JSON.parse(value) : INITIAL_PAGE_DATA;
+    return value
+      ? JSON.parse(value)
+      : INITIAL_PAGE_CACHE_DATA;
   }
 }
 

@@ -1,13 +1,30 @@
-export interface IPageCacheValue {
+export type User = {
+  avatar_url: string;
+  html_url: string;
+  login: string;
+  id: number;
+  repos_url: string;
+  score: number;
+  url: string;
+  [key: string]: string | number;
+};
+
+export type UsersResponseType = {
+  incomplete_results: boolean;
+  items: User[];
+  total_count: number;
+};
+
+export type PageContextValueType = {
   userName: string;
   usersCount: number;
-  users: any[];
-  currentUser: any;
-}
+  users: User[];
+  currentUser: User;
+};
 
-export type USER = {
-  name: string;
-  id: number;
-  img: string;
-  [key: string]: string | number;
+export type PageCacheValueType = {
+  cacheUserName: string;
+  cacheUsersCount: number;
+  cacheUsers: User[];
+  cacheCurrentUser: User | null;
 };
