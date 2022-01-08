@@ -32,22 +32,26 @@ const UsersSearcher: FC<UsersSearcherProps> = ({
     useCallback(
       (e) => {
         e.preventDefault();
-        async function getUsersRequest() {
+        const getUsersRequest = async () => {
           setIsLoad(true);
 
           const data = await getUsers(userName);
-          const { items, total_count } = data;
 
-          setUsers(items);
-          setUsersCount(total_count);
+          if (data) {
+            const { items, total_count } = data;
+
+            setUsers(items);
+            setUsersCount(total_count);
+
+            PageCache.set({
+              cacheUserName: userName,
+              cacheUsersCount: total_count,
+              cacheUsers: items,
+            });
+          }
+
           setIsLoad(false);
-
-          PageCache.set({
-            cacheUserName: userName,
-            cacheUsersCount: total_count,
-            cacheUsers: items,
-          });
-        }
+        };
         getUsersRequest();
       },
       [userName, setIsLoad, setUsers]

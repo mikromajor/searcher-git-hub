@@ -6,7 +6,24 @@ export type User = {
   repos_url: string;
   score: number;
   url: string;
-  [key: string]: string | number;
+};
+
+export type UserData = User & {
+  bio: null | string;
+  created_at: string;
+  followers: number;
+  following: number;
+  location: null | string;
+  email: null | string;
+  public_repos: number;
+  name: null | string;
+};
+
+export type RepoData = {
+  html_url: string;
+  forks_count: number;
+  name: string;
+  stargazers_count: number;
 };
 
 export type UsersResponseType = {
@@ -15,16 +32,12 @@ export type UsersResponseType = {
   total_count: number;
 };
 
-export type PageContextValueType = {
-  userName: string;
-  usersCount: number;
-  users: User[];
-  currentUser: User;
-};
-
 export type PageCacheValueType = {
   cacheUserName: string;
   cacheUsersCount: number;
   cacheUsers: User[];
-  cacheCurrentUser: User | null;
+  cacheCurrentUser: {
+    userData?: UserData;
+    reposData?: RepoData[];
+  } | null;
 };

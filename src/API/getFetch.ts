@@ -1,4 +1,4 @@
-const getFetch = async (url: string) => {
+const getFetch = async <T>(url: string) => {
   console.log("url in getFetch", url);
 
   const response = await fetch(url);
@@ -14,7 +14,7 @@ const getFetch = async (url: string) => {
     );
   }
 
-  return await response.json();
+  return (await response.json()) as unknown as T;
 };
 
 export default getFetch;

@@ -1,4 +1,11 @@
-export type GetUsersType = (username: string) => Promise<{
-  items: any;
-  total_count: number;
+export type GetUsersType = (username: string) => Promise<
+  | {
+      items: any;
+      total_count: number;
+    }
+  | undefined
+>;
+
+export type GetUsersDataType = () => Promise<{
+  ARR: [];
 }>;

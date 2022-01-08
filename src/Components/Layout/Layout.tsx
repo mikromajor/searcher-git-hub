@@ -7,16 +7,13 @@ import { UserInfo } from "../UserInfo";
 import "./Layout.scss";
 
 const Layout = () => {
-  console.log("Layout render");
-
   const { cacheUsers } = useContext(PageContext);
 
   const [users, setUsers] = useState(cacheUsers);
   const [isLoad, setIsLoad] = useState(false);
-  const [userInfo, setUserInfo] = useState<null | User>(
+  const [userInfo, setUserInfo] = useState<User | null>(
     null
   );
-  console.log(userInfo);
 
   return (
     <div className={"layout"}>
