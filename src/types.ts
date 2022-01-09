@@ -24,6 +24,7 @@ export type RepoData = {
   forks_count: number;
   name: string;
   stargazers_count: number;
+  id: number;
 };
 
 export type UsersResponseType = {
@@ -32,12 +33,14 @@ export type UsersResponseType = {
   total_count: number;
 };
 
+export type CurrentUserType = {
+  userData?: UserData;
+  reposData?: RepoData[];
+} | null;
+
 export type PageCacheValueType = {
   cacheUserName: string;
   cacheUsersCount: number;
   cacheUsers: User[];
-  cacheCurrentUser: {
-    userData?: UserData;
-    reposData?: RepoData[];
-  } | null;
+  cacheCurrentUser: CurrentUserType;
 };

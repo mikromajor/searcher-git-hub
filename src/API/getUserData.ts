@@ -1,17 +1,21 @@
 import getFetch from "./getFetch";
-import { User, UserData, RepoData } from "../types";
+import { UserData, RepoData } from "../types";
 
 type GetUserDataType = (
-  userInfo: User
+  userDataUrl: string,
+  reposDataUrl: string
 ) => Promise<
   [UserData | undefined, RepoData[] | undefined] | undefined
 >;
 
-const getUserData: GetUserDataType = async (userInfo) => {
+const getUserData: GetUserDataType = async (
+  userDataUrl,
+  reposDataUrl
+) => {
   try {
     const data = await Promise.all([
-      getFetch<UserData>(userInfo.url),
-      getFetch<RepoData[]>(userInfo.repos_url),
+      getFetch<UserData>(userDataUrl),
+      getFetch<RepoData[]>(reposDataUrl),
     ]);
 
     return data;

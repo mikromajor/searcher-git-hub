@@ -6,12 +6,15 @@ import "./UsersList.scss";
 
 type UsersListProps = {
   users: User[];
-  setUserInfo: (user: User) => void;
+  loadUserData: (
+    userDataUrl: string,
+    reposDataUrl: string
+  ) => void;
 };
 
 const UsersList = ({
   users,
-  setUserInfo,
+  loadUserData,
 }: UsersListProps) => {
   return (
     <ListGroup className={"usersList"}>
@@ -19,7 +22,7 @@ const UsersList = ({
         <UserItem
           key={user.id}
           user={user}
-          setUserInfo={setUserInfo}
+          loadUserData={loadUserData}
         />
       ))}
     </ListGroup>

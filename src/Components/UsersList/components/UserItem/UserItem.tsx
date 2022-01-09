@@ -4,16 +4,19 @@ import { User } from "../../../../types";
 
 type UserItemProps = {
   user: User;
-  setUserInfo: (user: User) => void;
+  loadUserData: (
+    userDataUrl: string,
+    reposDataUrl: string
+  ) => void;
 };
 
 const UserItem: FC<UserItemProps> = ({
   user,
-  setUserInfo,
+  loadUserData,
 }) => {
   const handleClick = useCallback(
-    () => setUserInfo(user),
-    [user, setUserInfo]
+    () => loadUserData(user.url, user.repos_url),
+    [user, loadUserData]
   );
 
   return (
