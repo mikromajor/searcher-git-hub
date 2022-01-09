@@ -11,15 +11,14 @@ const SearcherRepo: FC<SearcherRepoProps> = ({
   handleReposSearch,
 }) => {
   return (
-    <>
+    <div className='reposData__search'>
       <Form.Control
         type='text'
         value={repoName}
         placeholder='Search for repos'
         onChange={handleReposSearch}
-        className='reposData__search'
       />
-    </>
+    </div>
   );
 };
 export default SearcherRepo;

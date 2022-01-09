@@ -13,8 +13,9 @@
   @extend %flex__column;
   width: 100%;
   .reposData__search {
-    max-width: 100%;
-    margin: 20px 50px;
+    @extend %flex__100;
+    margin-bottom: 20px;
+    padding: 0 40px;
   }
   .usersList {
     @extend %flex__100;
