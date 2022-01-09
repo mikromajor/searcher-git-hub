@@ -3,15 +3,18 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: flex-start;
+  max-width: 900px;
   width: 100%;
 
   .user__info_block,
   .users__searcher_block {
     display: flex;
     flex-flow: column;
-    align-items: center;
-    max-width: 450px;
+    max-width: 400px;
     min-width: 270px;
     margin-top: 50px;
+    background-color: rgb(88, 252, 252);
+    border: 1px solid blue;
+    border-radius: 10px;
   }
 }

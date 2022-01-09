@@ -19,7 +19,7 @@ export type UserData = User & {
   name: null | string;
 };
 
-export type RepoData = {
+export type RepoDataType = {
   html_url: string;
   forks_count: number;
   name: string;
@@ -35,7 +35,7 @@ export type UsersResponseType = {
 
 export type CurrentUserType = {
   userData?: UserData;
-  reposData?: RepoData[];
+  reposData?: RepoDataType[];
 } | null;
 
 export type PageCacheValueType = {

@@ -1,0 +1,30 @@
+%flex__column {
+  display: flex;
+  flex-flow: column;
+}
+.userData {
+  @extend %flex__column;
+  align-items: center;
+  .userData__inline_block {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    .userData__avatar {
+      display: block;
+      position: relative;
+      object-fit: contain;
+      max-width: 120px;
+    }
+    .userData__common_info {
+      display: flex;
+      p {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+  }
+  .userData__common_info {
+    display: flex;
+    flex-flow: column wrap;
+  }
+}

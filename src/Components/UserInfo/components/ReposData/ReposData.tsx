@@ -5,10 +5,13 @@ import {
   useEffect,
 } from "react";
 import { Form, ListGroup } from "react-bootstrap";
-import { RepoData } from "../../../../types";
+import { RepoDataType } from "../../../../types";
+import { ReposDataItem, SearcherRepo } from "./components";
+
+import "./ReposData.scss";
 
 type ReposDataProps = {
-  reposData?: RepoData[];
+  reposData?: RepoDataType[];
 };
 
 const ReposData = ({ reposData }: ReposDataProps) => {
@@ -18,7 +21,6 @@ const ReposData = ({ reposData }: ReposDataProps) => {
 
   const handleReposSearch = useCallback((e) => {
     const searchValue = e.target.value;
-
     setRepoName(searchValue);
   }, []);
 
@@ -31,32 +33,26 @@ const ReposData = ({ reposData }: ReposDataProps) => {
   }, [repoName, reposData]);
 
   return (
-    <div>
+    <>
       {filteredReposData && (
-        <>
-          <Form.Control
-            type='text'
-            value={repoName}
-            placeholder='Search for repos'
-            onChange={handleReposSearch}
+        <div className={"reposData"}>
+          <SearcherRepo
+            repoName={repoName}
+            handleReposSearch={handleReposSearch}
           />
+
           <ListGroup className={"usersList"}>
             {!!filteredReposData.length ? (
               filteredReposData.map((repo) => (
-                <ListGroup.Item
-                  key={repo.id}
-                  variant='info'
-                >
-                  <span>{repo.name}</span>
-                </ListGroup.Item>
+                <ReposDataItem repo={repo} />
               ))
             ) : (
               <p>No searched repos</p>
             )}
           </ListGroup>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
