@@ -7,6 +7,9 @@ type UserDataProps = {
 
 const UserData = ({ userData }: UserDataProps) => {
   const joinDate = userData?.created_at.slice(0, 10);
+  const biography = !!userData?.bio
+    ? userData.bio
+    : "No biography";
   return (
     <>
       {userData && (
@@ -28,7 +31,7 @@ const UserData = ({ userData }: UserDataProps) => {
             </ul>
           </div>
           <div className='userData__bottom'>
-            <p>{userData?.bio}</p>
+            <p>{biography}</p>
           </div>
         </div>
       )}
