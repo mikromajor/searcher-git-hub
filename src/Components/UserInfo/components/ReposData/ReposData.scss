@@ -23,6 +23,10 @@
       @extend %flex__100;
       border: 1px solid blue;
       border-radius: 10px;
+      &:hover {
+        cursor: pointer;
+        background-color: rgb(74, 193, 223);
+      }
       .reposData__link {
         @extend %flex__100;
         justify-content: space-between;

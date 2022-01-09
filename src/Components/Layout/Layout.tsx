@@ -2,9 +2,9 @@ import { useState, useContext, useCallback } from "react";
 import { UsersSearcher, UsersList } from "../.";
 import { getUserData } from "../../api";
 import { PageContext } from "../../context";
-import { User } from "../../types";
 import { UserInfo } from "../UserInfo";
 import { PageCache } from "../../utils";
+import { Loader } from "../../ui";
 
 import "./Layout.scss";
 
@@ -39,11 +39,11 @@ const Layout = () => {
         PageCache.set({
           cacheCurrentUser: { userData, reposData },
         });
+        setIsUserInfoLoad(false);
       };
 
       setIsUserInfoLoad(true);
       getUsersRequest(userDataUrl, reposDataUrl);
-      setIsUserInfoLoad(false);
     },
     [setIsUserInfoLoad]
   );
@@ -56,7 +56,7 @@ const Layout = () => {
           setIsLoad={setIsLoad}
         />
         {isLoad ? (
-          <p>Loading...</p>
+          <Loader />
         ) : (
           <UsersList
             users={users}
@@ -64,13 +64,12 @@ const Layout = () => {
           />
         )}
       </div>
-      <div className='user__info_block'>
-        {isUserInfoLoad ? (
-          <p>Loading...</p>
-        ) : (
-          <UserInfo currentUser={currentUser} />
-        )}
-      </div>
+
+      {isUserInfoLoad ? (
+        <Loader />
+      ) : (
+        <UserInfo currentUser={currentUser} />
+      )}
     </div>
   );
 };

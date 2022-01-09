@@ -1,1 +1,2 @@
-export { default as Title } from "./Title/Title";
+export { Title } from "./Title";
+export { Loader } from "./Loader";

@@ -4,7 +4,7 @@ import {
   useCallback,
   useEffect,
 } from "react";
-import { Form, ListGroup } from "react-bootstrap";
+import { ListGroup } from "react-bootstrap";
 import { RepoDataType } from "../../../../types";
 import { ReposDataItem, SearcherRepo } from "./components";
 

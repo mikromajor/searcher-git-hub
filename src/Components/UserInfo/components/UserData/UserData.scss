@@ -17,14 +17,14 @@
     }
     .userData__common_info {
       display: flex;
+      flex-flow: column;
       padding-right: 20px;
       li {
         word-break: break-all;
       }
     }
   }
-  .userData__common_info {
-    display: flex;
-    flex-flow: column wrap;
+  .userData__bottom {
+    padding: 0 20px;
   }
 }
