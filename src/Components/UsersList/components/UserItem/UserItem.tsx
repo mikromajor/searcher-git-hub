@@ -21,17 +21,18 @@ const UserItem: FC<UserItemProps> = ({
 
   return (
     <ListGroup.Item
-      variant='info'
-      className={"user"}
+      className={"usersList__item"}
       onClick={handleClick}
     >
       <img
         src={user.avatar_url}
         alt={`${user.login} imag`}
-        className={"user__img"}
+        className={"usersList__item__img"}
       ></img>
-      <span className={"user__name"}>{user.login}</span>
-      <span className={"user__repo"}>TODO</span>
+      <span className={"usersList__item__name"}>
+        {user.login}
+      </span>
+      <span className={"usersList__item__todo"}>TODO</span>
     </ListGroup.Item>
   );
 };

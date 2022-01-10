@@ -41,10 +41,10 @@ const ReposData = ({ reposData }: ReposDataProps) => {
             handleReposSearch={handleReposSearch}
           />
 
-          <ListGroup className={"usersList"}>
+          <ListGroup className={"reposData__List"}>
             {!!filteredReposData.length ? (
               filteredReposData.map((repo) => (
-                <ReposDataItem repo={repo} />
+                <ReposDataItem repo={repo} key={repo.id} />
               ))
             ) : (
               <p>No searched repos</p>

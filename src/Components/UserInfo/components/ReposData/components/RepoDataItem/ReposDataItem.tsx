@@ -7,14 +7,12 @@ type ReposDataItemProps = {
 
 const ReposDataItem = ({ repo }: ReposDataItemProps) => {
   return (
-    <ListGroup.Item
-      key={repo.id}
-      variant='info'
-      className={"reposData__item"}
-    >
+    <ListGroup.Item className={"reposData__item"}>
       <a href={repo.html_url} className={"reposData__link"}>
-        <span className='reposData__name'>{repo.name}</span>
-        <div className={"reposData__link__end"}>
+        <span className='reposData__item__name'>
+          {repo.name}
+        </span>
+        <div className={"reposData__item__info"}>
           <span>{repo.forks_count} Forks</span>
           <span>{repo.stargazers_count} Stars</span>
         </div>

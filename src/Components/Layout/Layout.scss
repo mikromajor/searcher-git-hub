@@ -1,19 +1,18 @@
+@import "../../variables";
 .layout {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
   width: 100%;
+  background-color: $layout__background_color;
 
-  .users_searcher__block {
-    display: flex;
-    flex-flow: column;
-    max-width: 400px;
-    min-width: 270px;
-    margin-top: 50px;
+  .layout__block_users_searcher {
+    @extend %layout__blocks;
     margin-right: 10px;
-    background-color: rgb(88, 252, 252);
-    border: 1px solid blue;
-    border-radius: 10px;
+  }
+  .layout__wrapper_for_loader {
+    display: block;
+    width: 400px;
   }
 }

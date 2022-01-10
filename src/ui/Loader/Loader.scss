@@ -1,22 +1,19 @@
-.square {
-  width: 400px;
-
-  .load {
-    display: block;
-    position: relative;
-    margin: 50px auto;
-    width: 6em;
-    &::before {
-      content: "";
-      display: inline-block;
-      position: absolute;
-      left: -30px;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 5px dashed blue;
-      animation: rotate 2s infinite linear;
-    }
+.load {
+  display: block;
+  position: fixed;
+  left: 50%;
+  top: 45%;
+  width: 6em;
+  &::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: -30px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 5px dashed blue;
+    animation: rotate 2s infinite linear;
   }
 
   @keyframes rotate {

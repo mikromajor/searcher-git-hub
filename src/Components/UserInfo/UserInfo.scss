@@ -1,11 +1,5 @@
+@import "../../variables";
 .userInfo {
-  display: flex;
-  flex-flow: column;
+  @extend %layout__blocks;
   align-items: center;
-  max-width: 400px;
-  min-width: 270px;
-  margin-top: 50px;
-  background-color: rgb(88, 252, 252);
-  border: 1px solid blue;
-  border-radius: 10px;
 }

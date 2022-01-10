@@ -1,10 +1,6 @@
 import "./Loader.scss";
 
 const Loader = () => {
-  return (
-    <div className='square'>
-      <p className='load'>Loading...</p>
-    </div>
-  );
+  return <p className='load'>Loading...</p>;
 };
 export default Loader;

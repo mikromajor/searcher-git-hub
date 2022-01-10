@@ -50,7 +50,7 @@ const Layout = () => {
 
   return (
     <div className={"layout"}>
-      <div className='users_searcher__block'>
+      <div className='layout__block_users_searcher'>
         <UsersSearcher
           setUsers={setUsers}
           setIsLoad={setIsLoad}
@@ -66,7 +66,7 @@ const Layout = () => {
       </div>
 
       {isUserInfoLoad ? (
-        <div className='users_searcher__block'>
+        <div className='layout__wrapper_for_loader'>
           <Loader />
         </div>
       ) : (
