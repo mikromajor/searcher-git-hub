@@ -4,8 +4,16 @@ import "./UserData.scss";
 type UserDataProps = {
   userData?: UserDataType;
 };
+type Print = {
+  [key: string]: string;
+};
 
 const UserData = ({ userData }: UserDataProps) => {
+  //  const print:Print= {};
+  //   for(let key in userData){
+  //   print[key]=!!userData[key]?print[key].toString():('No '+key)
+  // }
+
   const name = !!userData?.name ? userData.name : "no name";
   const login = !!userData?.login
     ? userData.login
@@ -27,31 +35,27 @@ const UserData = ({ userData }: UserDataProps) => {
     : "0";
 
   return (
-    <>
-      {userData && (
-        <div className='userData'>
-          <div className='userData__inline_block'>
-            <img
-              src={userData?.avatar_url}
-              alt={`avatar ${userData?.login}`}
-              className='userData__avatar'
-            />
-            <ul className='userData__common_info'>
-              <li>{name}</li>
-              <li>{login}</li>
-              <li>{location}</li>
-              <li>{url}</li>
-              <li>Join date {joinDate}</li>
-              <li>{followers} Followers</li>
-              <li>Following {following}</li>
-            </ul>
-          </div>
-          <div className='userData__bottom'>
-            <p>{biography}</p>
-          </div>
-        </div>
-      )}
-    </>
+    <div className='userData'>
+      <div className='userData__inline_block'>
+        <img
+          src={userData?.avatar_url}
+          alt={`avatar ${userData?.login}`}
+          className='userData__avatar'
+        />
+        <ul className='userData__common_info'>
+          <li>{name}</li>
+          <li>{login}</li>
+          <li>{location}</li>
+          <li>{url}</li>
+          <li>Join date {joinDate}</li>
+          <li>{followers} Followers</li>
+          <li>Following {following}</li>
+        </ul>
+      </div>
+      <div className='userData__bottom'>
+        <p>{biography}</p>
+      </div>
+    </div>
   );
 };
 

@@ -12,7 +12,7 @@ type UserInfoProps = {
 const UserInfo = ({ currentUser }: UserInfoProps) => {
   return (
     <>
-      {currentUser && (
+      {currentUser && currentUser.userData && (
         <div className='userInfo'>
           <Title />
           <UserData userData={currentUser.userData} />
