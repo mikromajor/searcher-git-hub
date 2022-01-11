@@ -1,5 +1,5 @@
 import { PageContext } from "./context";
-import { Layout } from "./components";
+import { Layout } from "./сomponents";
 import { PageCache } from "./utils";
 
 import "./App.scss";

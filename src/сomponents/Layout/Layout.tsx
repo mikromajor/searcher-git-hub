@@ -1,5 +1,5 @@
 import { useState, useContext, useCallback } from "react";
-import { UsersSearcher, UsersList } from "../.";
+import { UsersSearcher, UsersList } from "..";
 import { getUserData } from "../../api";
 import { PageContext } from "../../context";
 import { UserInfo } from "../UserInfo";
