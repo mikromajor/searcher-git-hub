@@ -1,6 +1,6 @@
 import { useCallback, FC, memo } from "react";
 import { ListGroup } from "react-bootstrap";
-import { User } from "../../../../types";
+import { User } from "../../../../../../types";
 
 type UserItemProps = {
   user: User;

@@ -1,6 +1,6 @@
 import { ListGroup } from "react-bootstrap";
 import { UserItem } from "./components";
-import { User } from "../../types";
+import { User } from "../../../../types";
 
 import "./UsersList.scss";
 

@@ -1,4 +1,4 @@
-@import "../../variables";
+@import "../../../../variables";
 .usersList {
   display: flex;
   flex-flow: column;
@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: space-between;
     border: 1px solid $list__item__border_color;
-    border-radius: 10px;
+    border-radius: $main__border_radius;
     background-color: $list__item__background_color;
     &:hover,
     &:focus {

@@ -1,3 +1,4 @@
+@import "../../../../variables";
 %flex__column {
   display: flex;
   flex-flow: column;
@@ -6,24 +7,44 @@
   @extend %flex__column;
   align-items: center;
   justify-items: flex-start;
-  .userData__inline_block {
+  .userData__wrapper__inline {
     display: inline-flex;
     align-items: flex-start;
-    .userData__avatar {
-      display: block;
-      object-fit: contain;
-      width: 150px;
-      margin-left: 20px;
-    }
-    .userData__common_info {
-      display: flex;
-      flex-flow: column;
-      padding-right: 20px;
-      li {
-        word-break: break-all;
-      }
+  }
+  .userData__wrapper__column {
+    @extend %flex__column;
+  }
+  .userData__avatar {
+    display: block;
+    object-fit: contain;
+    width: 150px;
+    margin-left: 20px;
+    border-radius: $main__border_radius;
+    @extend %main__box_shadow;
+    &:hover {
+      cursor: pointer;
     }
   }
+  .userData__avatar__xl {
+    display: block;
+    object-fit: contain;
+    width: 350px;
+    margin: 20px auto;
+    border-radius: $main__border_radius;
+    @extend %main__box_shadow;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .userData__common_info {
+    display: flex;
+    flex-flow: column;
+    padding-right: 20px;
+    li {
+      word-break: break-all;
+    }
+  }
+
   .userData__bottom {
     padding: 0 20px;
   }

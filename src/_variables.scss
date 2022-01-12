@@ -1,8 +1,13 @@
-$layout__background_color: rgb(199, 199, 199);
+$background_color: rgb(199, 199, 199);
+$main__border_radius: 10px;
 $list__item__background_color: rgb(250, 250, 250);
 $list__item__background_color__hover: rgb(230, 230, 230);
 $list__item__background_color__active: rgb(130, 220, 220);
 $list__item__border_color: grey;
+
+%main__box_shadow {
+  box-shadow: 5px 3px 5px rgb(100, 100, 100);
+}
 
 %layout__blocks {
   display: flex;
@@ -11,9 +16,9 @@ $list__item__border_color: grey;
   min-width: 270px;
   margin-top: 50px;
   background-color: white;
-  border: 1px solid rgb(27, 27, 54);
-  border-radius: 10px;
-  box-shadow: 5px 3px 5px rgb(180, 180, 180);
+  border: 1px solid rgb(0, 0, 85);
+  border-radius: $main__border_radius;
+  @extend %main__box_shadow;
 }
 
 %flex__column {

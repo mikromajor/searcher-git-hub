@@ -5,12 +5,6 @@
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  background-color: $layout__background_color;
-
-  .layout__block_users_searcher {
-    @extend %layout__blocks;
-    margin-right: 10px;
-  }
   .layout__wrapper_for_loader {
     display: block;
     width: 400px;

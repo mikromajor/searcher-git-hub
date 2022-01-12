@@ -1,7 +1,7 @@
 import { PageCacheValueType } from "./types";
 
 export const INITIAL_PAGE_CACHE_DATA: PageCacheValueType = {
-  cacheUserName: "",
+  cacheSearchUserName: "",
   cacheUsersCount: 0,
   cacheUsers: [],
   cacheCurrentUser: null,

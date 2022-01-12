@@ -1,70 +1,25 @@
-import { useState, useContext, useCallback } from "react";
-import { UsersSearcher, UsersList } from "..";
-import { getUserData } from "../../api";
+import { useState, useContext } from "react";
 import { PageContext } from "../../context";
+import { UsersInfo } from "../.";
 import { UserInfo } from "../UserInfo";
-import { PageCache } from "../../utils";
 import { Loader } from "../../ui";
 
 import "./Layout.scss";
 
 const Layout = () => {
-  const { cacheUsers, cacheCurrentUser } =
-    useContext(PageContext);
-
-  const [users, setUsers] = useState(cacheUsers);
+  const { cacheCurrentUser } = useContext(PageContext);
   const [currentUser, setCurrentUser] = useState(
     cacheCurrentUser
   );
-  const [isLoad, setIsLoad] = useState(false);
   const [isUserInfoLoad, setIsUserInfoLoad] =
     useState(false);
 
-  const loadUserData = useCallback(
-    (userDataUrl: string, reposDataUrl: string) => {
-      const getUsersRequest = async (
-        userDataUrl: string,
-        reposDataUrl: string
-      ) => {
-        const result = await getUserData(
-          userDataUrl,
-          reposDataUrl
-        );
-        if (!result) return;
-
-        const [userData, reposData] = result;
-
-        setCurrentUser({ userData, reposData });
-
-        PageCache.set({
-          cacheCurrentUser: { userData, reposData },
-        });
-        setIsUserInfoLoad(false);
-      };
-
-      setIsUserInfoLoad(true);
-      getUsersRequest(userDataUrl, reposDataUrl);
-    },
-    [setIsUserInfoLoad]
-  );
-
   return (
     <div className={"layout"}>
-      <div className='layout__block_users_searcher'>
-        <UsersSearcher
-          setUsers={setUsers}
-          setIsLoad={setIsLoad}
-        />
-        {isLoad ? (
-          <Loader />
-        ) : (
-          <UsersList
-            users={users}
-            loadUserData={loadUserData}
-          />
-        )}
-      </div>
-
+      <UsersInfo
+        setCurrentUser={setCurrentUser}
+        setIsUserInfoLoad={setIsUserInfoLoad}
+      />
       {isUserInfoLoad ? (
         <div className='layout__wrapper_for_loader'>
           <Loader />

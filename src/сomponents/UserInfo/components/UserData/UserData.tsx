@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { UserData as UserDataType } from "../../../../types";
 import "./UserData.scss";
 type UserDataProps = {
@@ -9,47 +9,53 @@ type Print = {
 };
 
 const UserData = ({ userData }: UserDataProps) => {
-  //  const print:Print= {};
-  //   for(let key in userData){
-  //   print[key]=!!userData[key]?print[key].toString():('No '+key)
-  // }
-
-  const name = !!userData?.name ? userData.name : "no name";
-  const login = !!userData?.login
-    ? userData.login
-    : "no login";
-  const location = !!userData?.location
-    ? userData.location
-    : "no location";
-  const url = !!userData?.url ? userData.url : "no url";
-
-  const joinDate = userData?.created_at.slice(0, 10);
+  const [expandAvatar, setExpandAvatar] = useState(false);
+  const print: Print = {};
+  if (userData) {
+    for (const key in userData) {
+      print[key as keyof UserDataType] = !!userData[
+        key as keyof UserDataType
+      ]
+        ? `${userData[key as keyof UserDataType]}`
+        : "No " + key;
+    }
+  }
   const biography = !!userData?.bio
     ? userData.bio
     : "No biography";
-  const followers = userData?.followers
-    ? userData.followers
-    : "0";
-  const following = userData?.following
-    ? userData.following
-    : "0";
+  const handleAvatarSize = () => {
+    setExpandAvatar((prevState) => !prevState);
+  };
 
   return (
     <div className='userData'>
-      <div className='userData__inline_block'>
+      <div
+        className={
+          !expandAvatar
+            ? "userData__wrapper__inline"
+            : "userData__wrapper__column"
+        }
+      >
         <img
           src={userData?.avatar_url}
-          alt={`avatar ${userData?.login}`}
-          className='userData__avatar'
+          alt={"user avatar"}
+          className={
+            !expandAvatar
+              ? "userData__avatar"
+              : "userData__avatar__xl"
+          }
+          onClick={handleAvatarSize}
         />
         <ul className='userData__common_info'>
-          <li>{name}</li>
-          <li>{login}</li>
-          <li>{location}</li>
-          <li>{url}</li>
-          <li>Join date {joinDate}</li>
-          <li>{followers} Followers</li>
-          <li>Following {following}</li>
+          <li>
+            <strong>{print.name}</strong>
+          </li>
+          <li>{print.login}</li>
+          <li>{print.location}</li>
+          <li>{print.url}</li>
+          <li>Join date {print.created_at.slice(0, 10)}</li>
+          <li>{print.followers} Followers</li>
+          <li>Following {print.following}</li>
         </ul>
       </div>
       <div className='userData__bottom'>

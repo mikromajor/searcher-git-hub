@@ -5,10 +5,10 @@ import {
   useContext,
 } from "react";
 import Form from "react-bootstrap/Form";
-import { getUsers } from "../../api";
-import { PageContext } from "../../context";
-import { PageCache } from "../../utils";
-import { Title } from "../../ui";
+import { getUsers } from "../../../../api";
+import { PageContext } from "../../../../context";
+import { PageCache } from "../../../../utils";
+import { Title } from "../../../../ui";
 
 import "./UsersSearcher.scss";
 
@@ -21,10 +21,12 @@ const UsersSearcher: FC<UsersSearcherProps> = ({
   setUsers,
   setIsLoad,
 }) => {
-  const { cacheUserName, cacheUsersCount } =
+  const { cacheSearchUserName, cacheUsersCount } =
     useContext(PageContext);
 
-  const [userName, setUserName] = useState(cacheUserName);
+  const [userName, setUserName] = useState(
+    cacheSearchUserName
+  );
   const [usersCount, setUsersCount] =
     useState(cacheUsersCount);
 
@@ -44,7 +46,7 @@ const UsersSearcher: FC<UsersSearcherProps> = ({
             setUsersCount(total_count);
 
             PageCache.set({
-              cacheUserName: userName,
+              cacheSearchUserName: userName,
               cacheUsersCount: total_count,
               cacheUsers: items,
             });

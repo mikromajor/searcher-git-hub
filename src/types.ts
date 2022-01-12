@@ -39,7 +39,7 @@ export type CurrentUserType = {
 } | null;
 
 export type PageCacheValueType = {
-  cacheUserName: string;
+  cacheSearchUserName: string;
   cacheUsersCount: number;
   cacheUsers: User[];
   cacheCurrentUser: CurrentUserType;
