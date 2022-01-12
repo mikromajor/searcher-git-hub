@@ -3,7 +3,8 @@ import { UserData, RepoDataType } from "../types";
 
 type GetUserDataType = (
   userDataUrl: string,
-  reposDataUrl: string
+  reposDataUrl: string,
+  setIsErrorUserInfo: (value: string) => void
 ) => Promise<
   | [UserData | undefined, RepoDataType[] | undefined]
   | undefined
@@ -11,8 +12,10 @@ type GetUserDataType = (
 
 const getUserData: GetUserDataType = async (
   userDataUrl,
-  reposDataUrl
+  reposDataUrl,
+  setIsErrorUserInfo
 ) => {
+  setIsErrorUserInfo("");
   try {
     const data = await Promise.all([
       getFetch<UserData>(userDataUrl),
@@ -21,6 +24,9 @@ const getUserData: GetUserDataType = async (
 
     return data;
   } catch (e) {
+    setIsErrorUserInfo(
+      `Ups! Perhaps the limit of attempts has expired. ${e}`
+    );
     console.log("ups!!! getUserData has a problem!!!", e);
   }
 };

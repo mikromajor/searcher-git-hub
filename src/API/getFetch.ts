@@ -14,7 +14,7 @@ const getFetch = async <T>(url: string) => {
     );
   }
 
-  return (await response.json()) as unknown as T;
+  return response.json() as unknown as T;
 };
 
 export default getFetch;

@@ -3,7 +3,7 @@ import { getUserData } from "../../api";
 import { PageContext } from "../../context";
 import { UsersSearcher, UsersList } from "./.";
 import { PageCache } from "../../utils";
-import { Loader } from "../../ui";
+import { Loader, Error } from "../../ui";
 import { CurrentUserType } from "../../types";
 
 import "./UsersInfo.scss";
@@ -13,26 +13,31 @@ type UsersInfoProps = {
     currentUserType: CurrentUserType
   ) => void;
   setIsUserInfoLoad: (value: boolean) => void;
+  setIsErrorUserInfo: (value: string) => void;
 };
 
 const UsersInfo = ({
   setCurrentUser,
   setIsUserInfoLoad,
+  setIsErrorUserInfo,
 }: UsersInfoProps) => {
   const { cacheUsers } = useContext(PageContext);
 
   const [users, setUsers] = useState(cacheUsers);
   const [isLoad, setIsLoad] = useState(false);
+  const [isError, setIsError] = useState("");
 
   const loadUserData = useCallback(
     (userDataUrl: string, reposDataUrl: string) => {
       const getUsersRequest = async (
         userDataUrl: string,
-        reposDataUrl: string
+        reposDataUrl: string,
+        setIsErrorUserInfo: (value: string) => void
       ) => {
         const result = await getUserData(
           userDataUrl,
-          reposDataUrl
+          reposDataUrl,
+          setIsErrorUserInfo
         );
         if (!result) return;
 
@@ -47,9 +52,13 @@ const UsersInfo = ({
       };
 
       setIsUserInfoLoad(true);
-      getUsersRequest(userDataUrl, reposDataUrl);
+      getUsersRequest(
+        userDataUrl,
+        reposDataUrl,
+        setIsErrorUserInfo
+      );
     },
-    [setCurrentUser, setIsUserInfoLoad]
+    [setCurrentUser, setIsUserInfoLoad, setIsErrorUserInfo]
   );
 
   return (
@@ -57,8 +66,11 @@ const UsersInfo = ({
       <UsersSearcher
         setUsers={setUsers}
         setIsLoad={setIsLoad}
+        setIsError={setIsError}
       />
-      {isLoad ? (
+      {!!isError ? (
+        <Error message={isError} />
+      ) : isLoad ? (
         <Loader />
       ) : (
         <UsersList

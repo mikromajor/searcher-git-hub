@@ -15,11 +15,13 @@ import "./UsersSearcher.scss";
 type UsersSearcherProps = {
   setUsers: (users: any[]) => void;
   setIsLoad: (value: boolean) => void;
+  setIsError: (value: string) => void;
 };
 
 const UsersSearcher: FC<UsersSearcherProps> = ({
   setUsers,
   setIsLoad,
+  setIsError,
 }) => {
   const { cacheSearchUserName, cacheUsersCount } =
     useContext(PageContext);
@@ -37,7 +39,7 @@ const UsersSearcher: FC<UsersSearcherProps> = ({
         const getUsersRequest = async () => {
           setIsLoad(true);
 
-          const data = await getUsers(userName);
+          const data = await getUsers(userName, setIsError);
 
           if (data) {
             const { items, total_count } = data;
@@ -56,7 +58,7 @@ const UsersSearcher: FC<UsersSearcherProps> = ({
         };
         getUsersRequest();
       },
-      [userName, setIsLoad, setUsers]
+      [userName, setIsLoad, setUsers, setIsError]
     );
 
   return (
