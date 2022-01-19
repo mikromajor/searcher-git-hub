@@ -1,3 +1,34 @@
+# "searcher-git-hub"
+
+The web application that is able to search through
+GitHub users and their corresponding projects using
+the GitHub API: https://docs.github.com/en/rest and the React.
+
+The application contains 2 screens.
+
+The first screen contains a search bar that can
+search through any user on the GitHub website at the top
+with a list of results underneath.
+Each list item contains: the avatar image, the username.
+
+Tapping on a user brings up a screen
+that contains the profile details of that user.
+
+The view contains their avatar image, username, number of followers,
+number of following, biography, email, location, join date
+and a list of public repositories with a search bar at the top.
+
+Each item of the list view contains the name of the repository,
+the number of stars, and the number of forks.
+
+The search bar allows the user to search through the user’s repository.
+Additionally, the search automatically updates upon each letter entered.
+
+All results are cached such that when going back,
+the results still be displayed on the previous screen.
+
+#Demo https://mikromajor.github.io/searcher-git-hub/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
